@@ -1,0 +1,166 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  /* if you include padding or margin the element width will be the same */
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  /* height separation between lines */
+  color: #777;
+  padding: 30px;
+  /* better look */
+}
+
+.header {
+  height: 95vh;
+  /* always 95% of the vh */
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(128, 214, 113, 0.801),
+      rgba(40, 180, 133, 0.801)
+    ),
+    url(/img/hero.jpg);
+  /* a linear gradient above the image, we put together 'cause we need a background-image*/
+  background-size: cover;
+  /* always tried to fit the image */
+  background-position: center;
+  /* stay on top */
+
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* to spicify polygon wich the image will be visible using vh*/
+  position: relative;
+}
+
+.logo-box {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+
+.logo {
+  height: 35px;
+  /* the browser will auto figure the width */
+}
+
+.text-box {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* with top/left we move a vertex to te middle and with transform we move the element by itselft -50% for both side. This is responsive*/
+  text-align: center;
+}
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 60px;
+}
+
+.heading-primary-main {
+  display: block;
+  /* block elements occupy all the width that is avaible and create line breaks*/
+  font-size: 60px;
+  font-weight: 400;
+  letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  /* starts fast and slow down at the end */
+  /* 
+  animation-delay: 1s; 
+  animation-iteration-count: 3;
+  */
+}
+
+.heading-primary-sub {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 17.4px;
+  /* we adapt the size to the main */
+  animation: moveInRight 1s ease-out;
+  /* all the setting in one property */
+
+  /* to eliminate the bug of move we add backface-visibility: hidden; to de parent */
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* we want both link/visited equal */
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none; 
+  /* turn off the decoration */
+  padding: 15px 40px;
+  display: inline-block; 
+  /* block element, we use if we want some paddings, width or height */
+  
+  /* we text-align the box parent to the center */
+  border-radius: 100px;
+  transition: all .2s;
+  /* its another posibility to animate.all it means all the element to be animated and then the time */ 
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}

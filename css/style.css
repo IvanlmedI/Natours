@@ -134,33 +134,79 @@ body {
   }
 }
 
+@keyframes moveInButton {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* we want both link/visited equal */
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
-  text-decoration: none; 
+  text-decoration: none;
   /* turn off the decoration */
   padding: 15px 40px;
-  display: inline-block; 
+  display: inline-block;
   /* block element, we use if we want some paddings, width or height */
-  
+
   /* we text-align the box parent to the center */
   border-radius: 100px;
-  transition: all .2s;
-  /* its another posibility to animate.all it means all the element to be animated and then the time */ 
+  transition: all 0.2s;
+  /* its another posibility to animate.all it means all the element to be animated and then the time */
+  position: relative;
 }
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0,0,0,.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .btn:active {
   transform: translateY(-1px);
-  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+.btn::after {
+/* it's like a child button */
+  content: "";
+  /* always neccesary */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  /* the same look */
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* the reference (:relative;) will be the primary btn*/
+  z-index: -1; 
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.5) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInButton 0.4s ease-out 0.75s;
+  /* 0.75s is the delay */
+  animation-fill-mode: backwards;
+  /* prevent to see the button before de animation. aplied the 0% before the animation starts */
 }

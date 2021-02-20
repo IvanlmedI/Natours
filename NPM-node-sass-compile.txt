@@ -1,0 +1,17 @@
+NPM cmd
+cd Desktop
+cd Natours (entramos a la carpeta)
+npm init (to create package.js)
+complete with name, description, author
+npm install node-sass --save-dev (install sass)
+mkdir sass (create directory sass)
+cd sass
+touch main.scss (create a scss file)
+(add at script in package.js: "compile:sass": "node-sass sass/main.scss css/style.css") 
+npm run compile:sass (to compile into css)
+add "-w" to the script to watching
+IF WE CLOSE CMD IT WILL STOP. YOU CAN'T WRITE NOTHING IN THIS CMD WINDOW
+
+npm install live-server -g (intalling gloaby)
+live-server (in the main folder of the project to actived live server)
+ALSO WE CAN'T CLOSE THIS CMD
